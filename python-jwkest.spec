@@ -1,14 +1,14 @@
-%global         Python implementation of JWT, JWE, JWS and JWK
+%global         sum Python implementation of JWT, JWE, JWS and JWK
 %global         uname pyjwkest
 
-Name:           python-jwkest
-Version:        1.0.1
-Release:        1%{?dist}
+Name:           python-%{uname}
+Version:        1.3.2
+Release:        2%{?dist}
 Summary:        %{sum}
 
-License:        Apache 2.0
 URL:            https://github.com/rohe/pyjwkest
-Source0:        https://pypi.python.org/packages/64/72/275288499e91cfea8ad21fdda17c0c41d449da69c822cb0aa7ebc6a1ca0b/%{uname}-%{version}.tar.gz
+Source:         https://pypi.io/packages/source/p/%{uname}/%{uname}-%{version}.tar.gz
+License:        Apache 2.0
 
 BuildArch:      noarch
 
@@ -16,28 +16,20 @@ Buildrequires:  python-nose
 Buildrequires:  python-setuptools
 Buildrequires:  python2-devel
 Buildrequires:  pytest
+
 Requires:       python-crypto
 Requires:       python-requests
 Requires:       python-six
 Requires:       python2-futures
 
 %description
-An incredibly simple HTTP basic auth implementation
+%{sum}.
 
 %package -n python2-jwkest
 Summary:        %{sum}
 
-Buildrequires:  python-nose
-Buildrequires:  python-setuptools
-Buildrequires:  python2-devel
-Buildrequires:  pytest
-Requires:       python-crypto
-Requires:       python-requests
-Requires:       python-six
-Requires:       python2-futures
-
 %description -n python2-jwkest
-An incredibly simple HTTP basic auth implementation
+%{sum}.
 
 %prep
 %autosetup -n %{uname}-%{version}
@@ -53,5 +45,11 @@ An incredibly simple HTTP basic auth implementation
 %{_bindir}/*
 
 %changelog
+* Thu Mar 2 2017 Nicolas Hicher <nhicher@redhat.com> - 1.3.2-2
+- normalize spec file
+
+* Wed Mar 1 2017 Nicolas Hicher <nhicher@redhat.com> - 1.3.2-1
+- bump version for python-oic
+
 * Tue Feb 24 2017 Nicolas Hicher <nhicher@redhat.com> - 1.0.1-1
 - Initial packaging
